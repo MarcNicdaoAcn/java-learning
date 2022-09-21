@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "com.pluralsight.calcengine.App",
+            "projectName": "CalcEngine_4ddea378",
+            "args": [
+                "interactive"
+            ]
+        }
+    ]
+}
