@@ -36,6 +36,9 @@ public class App {
 
     }
 
+    /**
+     * Will run if the only argument from the command line is "interactive".
+     */
     static void executeInteractively() {
         System.out.println("Enter an operation and two numbers:");
         Scanner scanner = new Scanner(System.in);
@@ -45,6 +48,10 @@ public class App {
         scanner.close();
     }
 
+    /**
+     * @param parts - An array of taken from input through the command line.
+     *
+     */
     private static void performOperation(String[] parts) {
         char opCode = opCodeFromString(parts[0]);
         if(opCode == 'w'){
@@ -58,6 +65,11 @@ public class App {
         displayResult(opCode, leftVal, rightVal, result);
     }
 
+    /**
+     *
+     * @param parts - An array of taken from input through the command line and then passed through the performOperation method
+     *
+     */
     private static void handleWhen(String[] parts) {
         LocalDate startDate = LocalDate.parse(parts[1]);
         long daysToAdd = (long) valueFromWord(parts[2]);
@@ -68,18 +80,6 @@ public class App {
 
     private static void displayResult(char opCode, double leftVal, double rightVal, double result) {
         char symbol = symbolFromOpCode(opCode);
-        //equivalent of the string format using stringbuilder
-      // StringBuilder builder = new StringBuilder(20);
-      // builder.append(leftVal);
-      // builder.append(" ");
-      // builder.append(symbol);
-      // builder.append(" ");
-      // builder.append(rightVal);
-      // builder.append(" = ");
-      // builder.append(result);
-      // String output = builder.toString();
-      // System.out.println(output);
-
         String output = String.format("%.3f %c %.3f = %.3f", leftVal, symbol, rightVal, result);
         System.out.println(output);
     }
@@ -125,6 +125,12 @@ public class App {
 
     }
 
+    /**
+     * @param opCode   - used to determine the operation used
+     * @param leftVal  - a number used for the left side of the operation
+     * @param rightVal - a number used for the right side of the operation
+     * @return         - returns the result of the operation
+     */
     public static double run(char opCode, double leftVal, double rightVal) {
         double result;
         switch (opCode) {
@@ -153,6 +159,10 @@ public class App {
         return opCode;
     }
 
+    /**
+     * Converts some string to numbers
+     * @param word - number to be multiplied. Will take numbers zero - nine as sttrings.
+     */
     static double valueFromWord(String word) {
         String[] numberWords = {
                 "zero",
